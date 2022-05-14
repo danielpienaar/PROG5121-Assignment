@@ -11,8 +11,9 @@ public class MusicPurchases {
 
         //Get user input with a scanner
         Scanner input = new Scanner(System.in);
-        boolean valid = true;
+        boolean valid;
         do {
+            valid = true;
             try {
                 System.out.print("Enter the customer number >> ");
                 //Get customer number as a string to preserve the 0

@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
-
 public class CourseReport {
 
     public static void printCourseReport(Course_Details course) {
@@ -40,26 +39,31 @@ public class CourseReport {
         didm.setCourseName("Diploma in Data Metrics");
         didm.setLecturer("Mr Ntsinga");
         didm.setStudentNums(39);
-        
+
         //Ask user continuously to view course details
         char exit = 'n';
-        while(exit != 'y') {
-            int course = Integer.parseInt(JOptionPane.showInputDialog("Select from the following to view the course details:\n1) DISD\n2) DIWD\n3) DIDM"));
-            if (course == 1) {
-                printCourseReport(disd);
-            } else if (course == 2) {
-                printCourseReport(diwd);
-            } else if (course == 3) {
-                printCourseReport(didm);
-            } else {
-                //MessageDialog error variant adapted from
-                //https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
-                //Accessed June 2021
-                JOptionPane.showMessageDialog(null, "Invalid selection, defaulting to option 1", "Error", JOptionPane.ERROR_MESSAGE);
-                printCourseReport(disd);
+        while (exit != 'y') {
+            try {
+                int course = Integer.parseInt(JOptionPane.showInputDialog("Select from the following to view the course details:\n1) DISD\n2) DIWD\n3) DIDM"));
+                if (course == 1) {
+                    printCourseReport(disd);
+                } else if (course == 2) {
+                    printCourseReport(diwd);
+                } else if (course == 3) {
+                    printCourseReport(didm);
+                } else {
+                    //MessageDialog error variant adapted from
+                    //https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
+                    //Accessed June 2021
+                    JOptionPane.showMessageDialog(null, "Invalid selection, defaulting to option 1", "Error", JOptionPane.ERROR_MESSAGE);
+                    printCourseReport(disd);
+                }
+                exit = JOptionPane.showInputDialog("Would you like to exit the application? Enter (y) to exit or any other key to continue.").toLowerCase().charAt(0);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Exiting application", "Exit", JOptionPane.INFORMATION_MESSAGE);
+                System.exit(0);
             }
-            exit = JOptionPane.showInputDialog("Would you like to exit the application? Enter (y) to exit or any other key to continue.").toLowerCase().charAt(0);
         }
     }
-    
+
 }
